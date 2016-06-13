@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Nostalgeist</title>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style.css')}}">
+    <script type="text/javascript">
+        window.CLIENT_ID = "{{client_id}}";
+        window.SPOTIFY_TOKEN = "{{spotify_token}}";
+    </script>
+</head>
+<body>
+    <section>
+        <div>
+            <label>Last FM Username</label>
+            <input type="text" id="last-fm-username" name="last-fm-username"/>
+            <button type="button" id="import" name="import">Get Weekly Playlist</button>
+        </div>
+        <div>
+            <span id="week-name"></span>
+            <ol id="weekly-list">
+            </ol>
+        </div>
+    </section>
+    <section>
+        <button type="button" id="auth" name="auth">Authorize Spotify</button>
+        <button type="button" id="export" name="export" disabled="disabled">Export to Spotify</button>
+        <div>
+            <p>Tracks listed below were unable to be found in Spotify.</p>
+            <ul id="missing-tracks">
+            </ul>
+        </div>
+    </section>
+    <script src="{{url_for('static', filename='script.js')}}" type="text/javascript" charset="utf-8" async defer></script>
+</body>
+</html>

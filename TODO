@@ -1,0 +1,6 @@
+App
+ - Retry when empty week picked (5 times?)
+ - Some kind of persistence?
+Website
+ - Customize list size
+ - Better auth flow
