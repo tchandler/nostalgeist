@@ -1,2 +1,4 @@
 pylast
 spotipy
+flask
+python-dateutil
