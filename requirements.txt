@@ -2,3 +2,5 @@ pylast
 spotipy
 flask
 python-dateutil
+gevent
+gunicorn

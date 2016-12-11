@@ -37,3 +37,6 @@ def spotify_auth():
         return jsonify(success='Hey, it worked!', missing=missing_tracks)
     else:
         return jsonify(failure='No matching tracks found')
+
+if __name__ == "__main__":
+    app.run(host='0.0.0.0')
