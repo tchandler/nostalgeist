@@ -2,6 +2,8 @@
 <html>
 <head>
     <title>Nostalgeist</title>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='normalize.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='skeleton.css')}}">
     <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style.css')}}">
     <script type="text/javascript">
         window.CLIENT_ID = "{{client_id}}";
@@ -9,27 +11,57 @@
     </script>
 </head>
 <body>
-    <section>
-        <div>
-            <label>Last FM Username</label>
-            <input type="text" id="last-fm-username" name="last-fm-username"/>
-            <button type="button" id="import" name="import">Get Weekly Playlist</button>
-        </div>
-        <div>
-            <span id="week-name"></span>
-            <ol id="weekly-list">
-            </ol>
-        </div>
-    </section>
-    <section>
-        <button type="button" id="auth" name="auth">Authorize Spotify</button>
-        <button type="button" id="export" name="export" disabled="disabled">Export to Spotify</button>
-        <div>
-            <p>Tracks listed below were unable to be found in Spotify.</p>
-            <ul id="missing-tracks">
-            </ul>
-        </div>
-    </section>
+    <div class="container">
+        <section class="header">
+            <h2>Nostalgeist</h2>
+            <p>Bringing you yesterday, today.
+        </section>
+        <section class="last-fm">
+            <p>To get started, put your Last.fm username in the box below and click the button to load a playlist from a random week in your history. The tracks will be a mix of the most listened to from that week and a few random selections from the bottom of the list.
+                You can fetch a different list by pressing the button again.
+            </p>
+            <div class="last-fm-inputs">
+                <input type="text" id="last-fm-username" name="last-fm-username" placeholder="Last.fm Username"/>
+                <button type="button" id="import" name="import">Get Weekly Playlist</button>
+            </div>
+            <div id="last-fm-list-loader" style="display: none;">
+                <img src="{{url_for('static', filename='loading.gif')}}" />
+            </div>
+            <div id="last-fm-list" style="display: none;">
+                <div class="week-header">
+                    <h5 id="week-name"></h5>
+                </div>
+                <div class="last-fm-table-container">
+                    <table id="last-fm-table" class="u-full-width">
+                        <thead>
+                            <tr>
+                                <th>Artist</th>
+                                <th>Track</th>
+                                <th>Album</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+        <section class="spotify">
+            <button type="button" id="auth" name="auth">Authorize Spotify</button>
+            <button type="button disabled" id="export" name="export" style="display: none">Export to Spotify</button>
+            <div id="spotify-list-loader" style="display: none;">
+                <img src="{{url_for('static', filename='loading.gif')}}" />
+            </div>
+            <div id="spotify-result"></div>
+        </section>
+        <footer>
+            &copy; Tom Chandler 2016
+        </footer>
+    </div>
+    <script
+        src="https://code.jquery.com/jquery-3.1.1.slim.min.js"
+        integrity="sha256-/SIrNqv8h6QGKDuNoLGA4iret+kyesCkHGzVUUV0shc="
+        crossorigin="anonymous"></script>
     <script src="{{url_for('static', filename='script.js')}}" type="text/javascript" charset="utf-8" async defer></script>
 </body>
 </html>
